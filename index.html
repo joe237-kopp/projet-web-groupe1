@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet Collaboratif - Groupe 1</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== RESET & VARIABLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #7c3aed;
+            --accent-color: #f59e0b;
+            --dark-color: #1e293b;
+            --light-color: #f8fafc;
+            --text-color: #334155;
+            --text-light: #64748b;
+            --border-radius: 12px;
+            --border-radius-sm: 8px;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* ===== BASE STYLES ===== */
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: var(--shadow-lg);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo i {
+            color: var(--accent-color);
+            font-size: 2.5rem;
+        }
+
+        .logo-text h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .header-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .members-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+        }
+
+        .members-count i {
+            margin-right: 0.5rem;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            background-color: white;
+            padding: 1rem 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 0.5rem;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            color: var(--text-color);
+            border-radius: var(--border-radius-sm);
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            background-color: #f1f5f9;
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .nav-link.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            margin-bottom: 3rem;
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-text {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+        }
+
+        .stat i {
+            font-size: 1.2rem;
+        }
+
+        .hero-image {
+            text-align: center;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero-image i {
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 10rem;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* ===== MEMBERS SECTION ===== */
+        .main-content {
+            padding-bottom: 4rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-header h2 i {
+            margin-right: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        /* Member Card */
+        .member-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            border: 1px solid #e2e8f0;
+        }
+
+        .member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .member-card-header {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .member-avatar i {
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .member-info h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .member-role {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .member-card-body {
+            padding: 1.5rem;
+        }
+
+        .member-description {
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .member-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background-color: #e0f2fe;
+            color: #0369a1;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .member-card-footer {
+            padding: 1rem 1.5rem;
+            background-color: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--border-radius-sm);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* ===== TECHNOLOGIES SECTION ===== */
+        .tech-section {
+            margin-bottom: 4rem;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .tech-item {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+
+        .tech-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .tech-item i {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 3rem;
+        }
+
+        .tech-item h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+
+        .tech-item p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact-section {
+            margin-bottom: 4rem;
+        }
+
+        .contact-content {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-item i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            background: #e0f2fe;
+            padding: 1rem;
+            border-radius: 50%;
+        }
+
+        .contact-item h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+            color: var(--dark-color);
+        }
+
+        .contact-item p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-section h3 i {
+            color: var(--accent-color);
+        }
+
+        .footer-section p {
+            color: #cbd5e1;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+            padding-left: 0.5rem;
+        }
+
+        .footer-tech {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .footer-tech li {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer-bottom p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom p i {
+            margin-right: 0.3rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-stats {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 100px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: var(--shadow-lg);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .nav-menu.show {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .nav-link {
+                justify-content: center;
+            }
+            
+            .header .container {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .logo {
+                flex-direction: column;
+            }
+            
+            .logo i {
+                font-size: 2rem;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-image i {
+                font-size: 6rem;
+            }
+            
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .members-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-title {
+                font-size: 1.6rem;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .member-card {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .member-card:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .member-card:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .tech-item {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .tech-item:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .tech-item:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .tech-item:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-users"></i>
+                <div class="logo-text">
+                    <h1>GROUPE 1</h1>
+                    <p class="subtitle">Projet Web Collaboratif</p>
+                </div>
+            </div>
+            <div class="header-info">
+                <span class="members-count">
+                    <i class="fas fa-user-friends"></i>
+                    3 Membres
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link active">
+                    <i class="fas fa-home"></i>
+                    <span>Accueil</span>
+                </a></li>
+                <li><a href="KAMGUIA.html" class="nav-link">
+                    <i class="fas fa-user"></i>
+                    <span>KAMGUIA</span>
+                </a></li>
+                <li><a href="BABOU.html" class="nav-link">
+                    <i class="fas fa-user"></i>
+                    <span>BABOU</span>
+                </a></li>
+                <li><a href="BEBINE.html" class="nav-link">
+                    <i class="fas fa-user"></i>
+                    <span>BEBINE</span>
+                </a></li>
+                <li><a href="#contact" class="nav-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2 class="hero-title">Bienvenue sur Notre Projet Collaboratif</h2>
+                <p class="hero-text">
+                    Ce site présente les travaux des membres du Groupe 1 dans le cadre de notre projet HTML/CSS.
+                    Chaque membre a développé sa page personnelle en utilisant Git et GitHub pour le versioning.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <i class="fas fa-code"></i>
+                        <span>HTML5 & CSS3</span>
+                    </div>
+                    <div class="stat">
+                        <i class="fab fa-git-alt"></i>
+                        <span>Git & GitHub</span>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-laptop-code"></i>
+                        <span>Responsive Design</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <i class="fas fa-laptop-code"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membres Section -->
+    <main class="main-content">
+        <div class="container">
+            <section class="members-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-id-card"></i> Nos Membres</h2>
+                    <p>Découvrez les pages personnelles de chaque membre du groupe</p>
+                </div>
+
+                <div class="members-grid">
+                    <!-- Membre 1 : ATANGANA -->
+                    <div class="member-card">
+                        <div class="member-card-header">
+                            <div class="member-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="member-info">
+                                <h3>KAMGUIA</h3>
+                                <span class="member-role">Développeur Frontend</span>
+                            </div>
+                        </div>
+                        <div class="member-card-body">
+                            <p class="member-description">
+                                Passionné par le web design et les interfaces utilisateur modernes.
+                                Spécialiste en HTML5, CSS3 et JavaScript avec une approche centrée sur l'utilisateur.
+                            </p>
+                            <div class="member-skills">
+                                <span class="skill-tag">HTML5</span>
+                                <span class="skill-tag">CSS3</span>
+                                <span class="skill-tag">JavaScript</span>
+                                <span class="skill-tag">UI/UX</span>
+                                <span class="skill-tag">Responsive</span>
+                            </div>
+                        </div>
+                        <div class="member-card-footer">
+                            <a href="KAMGUIA.html" class="btn btn-primary">
+                                <i class="fas fa-external-link-alt"></i>
+                                Voir ma page
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Membre 2 : BABOU -->
+                    <div class="member-card">
+                        <div class="member-card-header">
+                            <div class="member-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="member-info">
+                                <h3>BABOU</h3>
+                                <span class="member-role">Développeur Fullstack</span>
+                            </div>
+                        </div>
+                        <div class="member-card-body">
+                            <p class="member-description">
+                                Expert en développement web complet, du frontend au backend.
+                                Passionné par les nouvelles technologies, l'optimisation et les bonnes pratiques de code.
+                            </p>
+                            <div class="member-skills">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">Django</span>
+                                <span class="skill-tag">React</span>
+                                <span class="skill-tag">MySQL</span>
+                                <span class="skill-tag">API REST</span>
+                            </div>
+                        </div>
+                        <div class="member-card-footer">
+                            <a href="BABOU.html" class="btn btn-primary">
+                                <i class="fas fa-external-link-alt"></i>
+                                Voir ma page
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Membre 3 : BOMODO -->
+                    <div class="member-card">
+                        <div class="member-card-header">
+                            <div class="member-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="member-info">
+                                <h3>BEBINE</h3>
+                                <span class="member-role">Designer & Intégrateur</span>
+                            </div>
+                        </div>
+                        <div class="member-card-body">
+                            <p class="member-description">
+                                Créatif et méticuleux, je transforme les maquettes en sites web fonctionnels.
+                                Amoureux du design responsive, des animations CSS et de l'expérience utilisateur fluide.
+                            </p>
+                            <div class="member-skills">
+                                <span class="skill-tag">Figma</span>
+                                <span class="skill-tag">CSS3</span>
+                                <span class="skill-tag">Sass</span>
+                                <span class="skill-tag">Animation</span>
+                                <span class="skill-tag">Wireframe</span>
+                            </div>
+                        </div>
+                        <div class="member-card-footer">
+                            <a href="BEBINE.html" class="btn btn-primary">
+                                <i class="fas fa-external-link-alt"></i>
+                                Voir ma page
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Technologies Section -->
+            <section class="tech-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-tools"></i> Technologies Utilisées</h2>
+                    <p>Les outils et technologies maîtrisés par notre équipe</p>
+                </div>
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <i class="fab fa-html5"></i>
+                        <h3>HTML5</h3>
+                        <p>Structure sémantique moderne des pages web</p>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fab fa-css3-alt"></i>
+                        <h3>CSS3</h3>
+                        <p>Styles avancés, flexbox, grid et animations</p>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fab fa-git-alt"></i>
+                        <h3>Git</h3>
+                        <p>Gestion de version et travail collaboratif</p>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fab fa-github"></i>
+                        <h3>GitHub</h3>
+                        <p>Hébergement, collaboration et revue de code</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section class="contact-section" id="contact">
+                <div class="section-header">
+                    <h2><i class="fas fa-envelope"></i> Contact du Groupe</h2>
+                    <p>Restons en contact pour plus d'informations</p>
+                </div>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-users"></i>
+                            <div>
+                                <h3>Groupe 1</h3>
+                                <p>Projet Web Collaboratif</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <div>
+                                <h3>Année académique</h3>
+                                <p>2025-2026</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <div>
+                                <h3>Cours</h3>
+                                <p>Versioning avec Git et GitHub</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-users"></i> Groupe 1</h3>
+                    <p>Projet réalisé dans le cadre de l'apprentissage du travail collaboratif avec Git et GitHub. Chaque membre a contribué à cette réalisation.</p>
+                </div>
+                <div class="footer-section">
+                    <h3><i class="fas fa-sitemap"></i> Navigation Rapide</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+                        <li><a href="pages/ATANGANA.html"><i class="fas fa-user"></i> KAMGUIA</a></li>
+                        <li><a href="pages/BABOU.html"><i class="fas fa-user"></i> BABOU</a></li>
+                        <li><a href="pages/BOMODO.html"><i class="fas fa-user"></i> BEBINE</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3><i class="fas fa-code"></i> Technologies</h3>
+                    <ul class="footer-tech">
+                        <li>HTML5</li>
+                        <li>CSS3</li>
+                        <li>JavaScript</li>
+                        <li>Git</li>
+                        <li>GitHub</li>
+                        <li>Responsive Design</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>
+                    <i class="far fa-copyright"></i> 2025 - Tous droits réservés Groupe 1 | 
+                    Projet académique - Versioning avec Git et GitHub
+                </p>
+                <div class="footer-social">
+                    <a href="#" class="social-link" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="social-link" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="#" class="social-link" title="Site Web">
+                        <i class="fas fa-globe"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript pour le menu responsive -->
+    <script>
+        // Menu toggle pour mobile
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('show');
+            
+            // Changer l'icône
+            const icon = this.querySelector('i');
+            if (navMenu.classList.contains('show')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Fermer le menu en cliquant sur un lien
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navMenu').classList.remove('show');
+                document.querySelector('#menuToggle i').classList.remove('fa-times');
+                document.querySelector('#menuToggle i').classList.add('fa-bars');
+            });
+        });
+
+        // Effet de scroll sur la navbar
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            const header = document.querySelector('.header');
+            
+            if (window.scrollY > 50) {
+                navbar.style.position = 'fixed';
+                navbar.style.top = '0';
+                navbar.style.width = '100%';
+                navbar.style.zIndex = '1000';
+                navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+                header.style.marginBottom = navbar.offsetHeight + 'px';
+            } else {
+                navbar.style.position = 'static';
+                navbar.style.boxShadow = 'none';
+                header.style.marginBottom = '0';
+            }
+        });
+
+        // Animation au scroll
+        function checkScroll() {
+            const elements = document.querySelectorAll('.member-card, .tech-item');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        // Initialiser les animations
+        document.querySelectorAll('.member-card, .tech-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', checkScroll);
+
+        // Date dynamique dans le footer
+        document.addEventListener('DOMContentLoaded', function() {
+            const year = new Date().getFullYear();
+            const copyright = document.querySelector('.footer-bottom p');
+            if (copyright) {
+                copyright.innerHTML = copyright.innerHTML.replace('2024', year);
+            }
+        });
+    </script>
+</body>
+</html>
