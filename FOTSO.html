@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KAMGUIA - Groupe 1</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* ===== VARIABLES ===== */
+        :root {
+            --primary-color: #2a2d43;
+            --secondary-color: #6d72c3;
+            --accent-color: #ff7e5f;
+            --light-accent: #f9c846;
+            --dark-color: #1a1c2e;
+            --light-color: #f8f9fa;
+            --text-color: #333;
+            --light-text: #777;
+            --border-radius: 16px;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --hover-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            --gradient-primary: linear-gradient(135deg, #2a2d43 0%, #3d4166 100%);
+            --gradient-secondary: linear-gradient(135deg, #6d72c3 0%, #8a4fff 100%);
+            --gradient-accent: linear-gradient(135deg, #ff7e5f 0%, #feb47b 100%);
+        }
+        
+        /* ===== BASE STYLES ===== */
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* ===== HEADER ===== */
+        .member-header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 4rem 0 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .member-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            z-index: 0;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .member-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+        
+        .member-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+        
+        .member-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .header-decoration {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(255, 126, 95, 0.1);
+            filter: blur(60px);
+            z-index: 1;
+        }
+        
+        .decoration-1 {
+            top: -100px;
+            left: -100px;
+        }
+        
+        .decoration-2 {
+            bottom: -100px;
+            right: -100px;
+            background: rgba(109, 114, 195, 0.1);
+        }
+        
+        /* ===== NAVIGATION ===== */
+        .member-nav {
+            background-color: white;
+            padding: 1.2rem 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .nav-logo span {
+            color: var(--accent-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            background-color: white;
+            transition: var(--transition);
+            font-weight: 500;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-secondary);
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+        
+        .nav-btn:hover::before {
+            left: 0;
+        }
+        
+        .nav-btn:hover {
+            color: white;
+            border-color: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(109, 114, 195, 0.2);
+        }
+        
+        .nav-btn.primary {
+            background: var(--gradient-secondary);
+            color: white;
+        }
+        
+        .nav-btn.primary:hover {
+            box-shadow: 0 10px 20px rgba(109, 114, 195, 0.3);
+        }
+        
+        /* ===== MAIN CONTENT ===== */
+        .member-content {
+            padding: 4rem 0;
+        }
+        
+        /* ===== HERO SECTION ===== */
+        .hero-section {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+            background: white;
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+        }
+        
+        .hero-section:hover {
+            box-shadow: var(--hover-shadow);
+            transform: translateY(-5px);
+        }
+        
+        @media (max-width: 900px) {
+            .hero-section {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+        
+        .hero-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .image-container {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: var(--gradient-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(255, 126, 95, 0.3);
+        }
+        
+        .image-container::after {
+            content: '';
+            position: absolute;
+            width: 270px;
+            height: 270px;
+            border-radius: 50%;
+            border: 3px dashed rgba(255, 126, 95, 0.3);
+            animation: spin 30s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .hero-image i {
+            font-size: 7rem;
+            color: white;
+        }
+        
+        .hero-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+        
+        .hero-info h3 i {
+            color: var(--accent-color);
+            background: rgba(255, 126, 95, 0.1);
+            padding: 0.5rem;
+            border-radius: 10px;
+        }
+        
+        .hero-info p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--light-text);
+        }
+        
+        .highlight-box {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(to right, rgba(109, 114, 195, 0.05), rgba(255, 126, 95, 0.05));
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .highlight-box p {
+            margin-bottom: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+        
+        .highlight-box i {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+        
+        /* ===== SECTION STYLES ===== */
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h3 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            display: inline-block;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+        
+        .section-title h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-accent);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: var(--light-text);
+            max-width: 600px;
+            margin: 1rem auto 0;
+        }
+        
+        /* ===== SKILLS SECTION ===== */
+        .skills-section {
+            margin-bottom: 4rem;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .skill-card {
+            background: white;
+            padding: 2rem 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border-top: 4px solid transparent;
+        }
+        
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-secondary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        
+        .skill-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--hover-shadow);
+        }
+        
+        .skill-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 1.5rem;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(109, 114, 195, 0.1);
+            color: var(--secondary-color);
+            font-size: 2rem;
+        }
+        
+        .skill-card h4 {
+            margin-bottom: 0.8rem;
+            color: var(--primary-color);
+        }
+        
+        .skill-card p {
+            color: var(--light-text);
+            font-size: 0.95rem;
+        }
+        
+        /* ===== EDUCATION SECTION ===== */
+        .education-section {
+            margin-bottom: 4rem;
+        }
+        
+        .education-timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .education-timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--gradient-primary);
+        }
+        
+        .education-item {
+            background: white;
+            padding: 1.8rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            margin-bottom: 2rem;
+            position: relative;
+            margin-left: 80px;
+            transition: var(--transition);
+        }
+        
+        .education-item:hover {
+            transform: translateX(10px);
+            box-shadow: var(--hover-shadow);
+        }
+        
+        .education-item::before {
+            content: '';
+            position: absolute;
+            left: -60px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            border: 4px solid var(--secondary-color);
+            box-shadow: 0 0 0 5px rgba(109, 114, 195, 0.1);
+        }
+        
+        .education-item h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+        
+        .education-item h4 i {
+            color: var(--accent-color);
+        }
+        
+        .education-item p {
+            color: var(--light-text);
+            margin-bottom: 0.5rem;
+        }
+        
+        .education-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin-top: 1rem;
+        }
+        
+        .tag {
+            background: rgba(109, 114, 195, 0.1);
+            color: var(--secondary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        /* ===== PROJECTS SECTION ===== */
+        .projects-section {
+            margin-bottom: 4rem;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--hover-shadow);
+        }
+        
+        .project-header {
+            padding: 1.5rem;
+            background: var(--gradient-primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .project-header h4 {
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+        
+        .project-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .project-body {
+            padding: 1.5rem;
+        }
+        
+        .project-body p {
+            color: var(--light-text);
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tech-tag {
+            background: rgba(109, 114, 195, 0.1);
+            color: var(--secondary-color);
+            padding: 0.2rem 0.7rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+            flex: 1;
+            justify-content: center;
+        }
+        
+        .project-link:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(109, 114, 195, 0.3);
+        }
+        
+        .project-link.secondary {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        
+        .project-link.secondary:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        /* ===== CONTACT SECTION ===== */
+        .contact-section {
+            margin-bottom: 4rem;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--hover-shadow);
+        }
+        
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 1.5rem;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 126, 95, 0.1);
+            color: var(--accent-color);
+            font-size: 2rem;
+        }
+        
+        .contact-card h4 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .contact-card p, .contact-card a {
+            color: var(--light-text);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-card a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* ===== FOOTER ===== */
+        .member-footer {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 3rem 0 2rem;
+            margin-top: 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-col h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-bottom p {
+            margin-bottom: 0.5rem;
+            opacity: 0.8;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .social-link:hover {
+            background: var(--accent-color);
+            transform: translateY(-5px);
+        }
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .member-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .member-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .education-timeline::before {
+                left: 20px;
+            }
+            
+            .education-item {
+                margin-left: 60px;
+            }
+            
+            .education-item::before {
+                left: -50px;
+                width: 30px;
+                height: 30px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-section {
+                padding: 1.5rem;
+            }
+            
+            .image-container {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .image-container::after {
+                width: 220px;
+                height: 220px;
+            }
+            
+            .hero-image i {
+                font-size: 5rem;
+            }
+            
+            .section-title h3 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="member-header">
+        <div class="header-decoration decoration-1"></div>
+        <div class="header-decoration decoration-2"></div>
+        <div class="container header-content">
+            <h1>GROUPE 1 - PROJET COLLABORATIF</h1>
+            <h2>KAMGUIA</h2>
+            <p>Développeur Full-Stack & Designer UI/UX | Passionné par la création d'expériences digitales innovantes</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="member-nav">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">
+                <i class="fas fa-code"></i>
+                Kam<span>guia</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-btn">
+                    <i class="fas fa-home"></i>
+                    Accueil
+                </a>
+                <a href="#projects" class="nav-btn">
+                    <i class="fas fa-project-diagram"></i>
+                    Projets
+                </a>
+                <a href="https://kamguia-portfolio.netlify.app" target="_blank" class="nav-btn primary">
+                    <i class="fas fa-external-link-alt"></i>
+                    Portfolio
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenu principal -->
+    <main class="member-content">
+        <div class="container">
+            <!-- Section Héros/Profil -->
+            <section class="hero-section">
+                <div class="hero-image">
+                    <div class="image-container">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                <div class="hero-info">
+                    <h3><i class="fas fa-user-circle"></i> À propos de moi</h3>
+                    <p>
+                        Je suis <strong>KAMGUIA</strong>, développeur full-stack passionné par la création d'applications web modernes et performantes. 
+                        Mon approche combine à la fois une expertise technique solide et un sens esthétique développé pour 
+                        créer des expériences utilisateur mémorables.
+                    </p>
+                    <p>
+                        Dans le cadre du projet collaboratif du Groupe 1, je me concentre sur l'optimisation des processus 
+                        de développement et l'intégration des meilleures pratiques de versioning avec Git et GitHub.
+                    </p>
+                    <div class="highlight-box">
+                        <p>
+                            <i class="fas fa-bullseye"></i>
+                            <strong>Mission :</strong> Créer des solutions digitales qui allient performance, élégance et expérience utilisateur optimale.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Compétences -->
+            <section class="skills-section">
+                <div class="section-title">
+                    <h3>Mes Compétences</h3>
+                    <p>Un éventail de technologies et méthodologies que j'utilise pour concrétiser des projets innovants</p>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fab fa-react"></i>
+                        </div>
+                        <h4>React & Next.js</h4>
+                        <p>Développement d'applications frontend modernes avec React, Next.js et Redux</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fab fa-node-js"></i>
+                        </div>
+                        <h4>Node.js & Express</h4>
+                        <p>Création d'APIs robustes et sécurisées avec Node.js, Express et MongoDB</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h4>Bases de données</h4>
+                        <p>MongoDB, PostgreSQL, MySQL avec optimisation des performances et modélisation</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h4>UI/UX Design</h4>
+                        <p>Conception d'interfaces utilisateur intuitives avec Figma et Adobe XD</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fab fa-git-alt"></i>
+                        </div>
+                        <h4>Git & DevOps</h4>
+                        <p>Gestion de versions, CI/CD, Docker et déploiement sur AWS et Netlify</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h4>Responsive Design</h4>
+                        <p>Applications adaptées à tous les devices avec approche mobile-first</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Formation -->
+            <section class="education-section">
+                <div class="section-title">
+                    <h3>Formation & Certifications</h3>
+                    <p>Mon parcours académique et les certifications qui ont jalonné mon développement professionnel</p>
+                </div>
+                <div class="education-timeline">
+                    <div class="education-item">
+                        <h4><i class="fas fa-graduation-cap"></i> Master en Informatique</h4>
+                        <p>Spécialisation en Développement Web et Architecture Logicielle</p>
+                        <p>Université de Technologie - 2020-2023</p>
+                        <div class="education-tags">
+                            <span class="tag">Algorithmique</span>
+                            <span class="tag">Architecture Logicielle</span>
+                            <span class="tag">Bases de données avancées</span>
+                        </div>
+                    </div>
+                    <div class="education-item">
+                        <h4><i class="fas fa-certificate"></i> Certifications Professionnelles</h4>
+                        <p>Full-Stack Development, Cloud Computing & UI/UX Design</p>
+                        <p>Obtenues via Coursera, Udemy et Google - 2021-2024</p>
+                        <div class="education-tags">
+                            <span class="tag">AWS Certified</span>
+                            <span class="tag">React Specialist</span>
+                            <span class="tag">UI/UX Design</span>
+                        </div>
+                    </div>
+                    <div class="education-item">
+                        <h4><i class="fas fa-book-open"></i> Formation en Cours</h4>
+                        <p>Versioning collaboratif avec Git & GitHub - Projet Groupe 1</p>
+                        <p>Optimisation des workflows d'équipe et gestion de projet agile</p>
+                        <div class="education-tags">
+                            <span class="tag">Git Avancé</span>
+                            <span class="tag">GitHub Actions</span>
+                            <span class="tag">Collaboration</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Projets -->
+            <section class="projects-section" id="projects">
+                <div class="section-title">
+                    <h3>Mes Projets</h3>
+                    <p>Une sélection de projets récents qui illustrent mes compétences et ma passion pour le développement</p>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h4><i class="fas fa-shopping-cart"></i> E-Commerce Platform</h4>
+                            <div class="project-icon">
+                                <i class="fas fa-store"></i>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <p>Plateforme e-commerce complète avec React frontend, Node.js backend et système de paiement intégré. Design responsive avec gestion d'inventaire en temps réel.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">MongoDB</span>
+                                <span class="tech-tag">Stripe API</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://kamguia-ecommerce.netlify.app" target="_blank" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    Live Demo
+                                </a>
+                                <a href="https://github.com/kamguia/ecommerce" target="_blank" class="project-link secondary">
+                                    <i class="fab fa-github"></i>
+                                    Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h4><i class="fas fa-tasks"></i> Task Management App</h4>
+                            <div class="project-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <p>Application de gestion de tâches collaborative avec tableaux Kanban, assignation d'équipe et notifications en temps réel. Interface drag-and-drop intuitive.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Vue.js</span>
+                                <span class="tech-tag">Express</span>
+                                <span class="tech-tag">Socket.io</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://kamguia-tasks.netlify.app" target="_blank" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    Voir l'app
+                                </a>
+                                <a href="https://github.com/kamguia/task-manager" target="_blank" class="project-link secondary">
+                                    <i class="fab fa-github"></i>
+                                    Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h4><i class="fas fa-chart-line"></i> Analytics Dashboard</h4>
+                            <div class="project-icon">
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <p>Tableau de bord analytique avec visualisations de données interactives, rapports personnalisables et intégration multi-sources. Design moderne et dark mode.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Next.js</span>
+                                <span class="tech-tag">D3.js</span>
+                                <span class="tech-tag">Tailwind CSS</span>
+                                <span class="tech-tag">REST API</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    Bientôt
+                                </a>
+                                <a href="https://github.com/kamguia/analytics-dashboard" target="_blank" class="project-link secondary">
+                                    <i class="fab fa-github"></i>
+                                    Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Contact -->
+            <section class="contact-section">
+                <div class="section-title">
+                    <h3>Contact & Réseaux</h3>
+                    <p>N'hésitez pas à me contacter pour discuter de projets, collaborations ou opportunités</p>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h4>Email</h4>
+                        <a href="mailto:kamguia.dev@example.com">kamguia.dev@example.com</a>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <h4>GitHub</h4>
+                        <a href="https://github.com/kamguia" target="_blank">github.com/kamguia</a>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <h4>LinkedIn</h4>
+                        <a href="https://linkedin.com/in/kamguia" target="_blank">linkedin.com/in/kamguia</a>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h4>Portfolio</h4>
+                        <a href="https://kamguia-portfolio.netlify.app" target="_blank">kamguia-portfolio.netlify.app</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="member-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>Kamguia</h4>
+                    <p>Développeur full-stack passionné par la création d'expériences digitales innovantes et performantes.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/kamguia" target="_blank" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/kamguia" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://twitter.com/kamguia" target="_blank" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Liens Rapides</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Page Principale</a></li>
+                        <li><a href="#projects"><i class="fas fa-chevron-right"></i> Mes Projets</a></li>
+                        <li><a href="https://kamguia-portfolio.netlify.app" target="_blank"><i class="fas fa-chevron-right"></i> Portfolio Complet</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Compétences Clés</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-check-circle"></i> Développement Full-Stack</a></li>
+                        <li><a href="#"><i class="fas fa-check-circle"></i> UI/UX Design</a></li>
+                        <li><a href="#"><i class="fas fa-check-circle"></i> Git & Collaboration</a></li>
+                        <li><a href="#"><i class="fas fa-check-circle"></i> Architecture Cloud</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> KAMGUIA. Tous droits réservés.</p>
+                <p>Page créée dans le cadre du projet collaboratif du Groupe 1 - Versioning avec Git et GitHub</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mise à jour automatique de l'année dans le footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Animation au défilement
+        document.addEventListener('DOMContentLoaded', function() {
+            // Observer pour les animations d'apparition
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observer les sections pour l'animation
+            const sections = document.querySelectorAll('.hero-section, .skill-card, .education-item, .project-card, .contact-card');
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(section);
+            });
+            
+            // Effet de parallaxe sur le header
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const header = document.querySelector('.member-header');
+                const rate = scrolled * -0.3;
+                header.style.backgroundPosition = `center ${rate}px`;
+            });
+            
+            // Animation des cartes au survol
+            const cards = document.querySelectorAll('.skill-card, .project-card, .contact-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.zIndex = '10';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.zIndex = '1';
+                });
+            });
+            
+            // Navigation fluide
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId !== '#') {
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 100,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+            
+            // Effet sur les liens de navigation
+            const navButtons = document.querySelectorAll('.nav-btn');
+            navButtons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px)';
+                });
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+        
+        // Animation de la timeline de formation
+        document.addEventListener('scroll', function() {
+            const timelineItems = document.querySelectorAll('.education-item');
+            const timeline = document.querySelector('.education-timeline');
+            
+            if (timeline) {
+                const timelineTop = timeline.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (timelineTop < windowHeight * 0.8) {
+                    timelineItems.forEach((item, index) => {
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'translateX(0)';
+                        }, index * 200);
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
